@@ -58,5 +58,9 @@ The game starts when the user clicks the play bottom, and the 48 rocks are distr
 
 The game is over when one player's storages are empty. The other player takes the rocks remaining in their storage and puts those in their store. The player with more rocks in their storage wins. 
 
+## Wireframe
+
+<img src="/resources/miniFrame.jpg">
+<img src="/resources/manwire.jpg">
 
 <!--Next add wireframe  -->
