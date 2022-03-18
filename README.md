@@ -61,6 +61,6 @@ The game is over when one player's storages are empty. The other player takes th
 ## Wireframe
 
 <img src="/resources/miniFrame.jpg">
-<img src="/resources/manwire.jpg">
+<img src="/resources/manwire.png">
 
 <!--Next add wireframe  -->
