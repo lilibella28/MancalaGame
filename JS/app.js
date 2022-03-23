@@ -51,7 +51,7 @@ let displayMessage = document.querySelector("#message");
 buttoms.addEventListener("click", handlerEvent);
 startPlaying.addEventListener("click", init);
 init();
-
+render()
 /* 
 ================================================================================================
                   Init function 
@@ -65,7 +65,7 @@ function init(e) {
   player1ScoreBox.innerHTML = 0;
   player2ScoreBox.innerHTML = 0;
 
- 
+  render()
 }
 
 /* 
@@ -80,25 +80,28 @@ function render() {
   mainArrayNumber.forEach((num) => {
     const newBtn = document.querySelector("button");
     buttoms.appendChild(newBtn);
-    console.log(newBtn);
+    // console.log(newBtn);
     return (newBtn.innerHTML = num);
   });
 
+ 
 
-  // gameOver();
-  // winner();
-  // scores();
-  render();
+
   
 }
 
 function handlerEvent(e) {
   console.log(e.target.id);
-  indexUser = e.target.id;
+  indexUser = parseInt(e.target.id);
   const arrayPositionTofill = mainArrayNumber[indexUser];
+  console.log(arrayPositionTofill, " hello testing")
   mainArrayNumber[indexUser] = 0;
-  mancalaAdd(mainArrayNumber, indexUser - 1, arrayPositionTofill);
   
+  mancalaAdd(mainArrayNumber, indexUser - 1, arrayPositionTofill);
+
+  gameOver();
+  scores();
+  winner();
 
   render()
 }
@@ -146,6 +149,7 @@ function gameOver() {
       mainArrayNumber[11] +
       mainArrayNumber[12];
     console.log(player2Score);
+    player2ScoreBox.innerHTML = player2Score;
     return player2Score;
   }
 
@@ -164,7 +168,8 @@ function gameOver() {
       mainArrayNumber[4] +
       mainArrayNumber[5];
     console.log(player1Score);
-    return player1Score;
+    player2ScoreBox.innerHTML = player2Score;
+    return player2Score;
   }
 }
 
@@ -173,9 +178,9 @@ function winner() {
     displayMessage.innerHTML = `player 1 is the winner with a score of ${player1Score}`;
     return displayMessage;
   }
-  if (player2Score > player1Score) {
+  else if (player2Score > player1Score) {
     displayMessage.innerHTML = `player 2 is the winner with a score of ${player2Score}`;
-    return displayMessage;
+      return displayMessage;
   } else {
     displayMessage.innerHTML = "Tied Game";
   }
