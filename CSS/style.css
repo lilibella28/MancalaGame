@@ -1,0 +1,197 @@
+
+body{
+    display: grid;
+    background-color: white;
+    font-family: 'Rubik', sans-serif;
+
+}
+header{
+     display: flex;
+    height: 100px;
+    background-color:rgb(164, 172, 134);
+    color: rgb(51, 61, 76);;
+    justify-content: center
+}
+h1{
+
+   
+    letter-spacing: 0.1em;
+  
+      }
+
+      p{
+        font-size: 20px;
+        font-weight: 400;
+        position: relative;
+        text-align: center;
+    }
+
+section{
+    display: grid;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 600px;
+   
+    
+}
+
+section.firstSection > div{
+    display: grid;
+    justify-content: start;
+    grid-template-columns: auto auto;
+     grid-template-rows: repeat(7, auto);
+     grid-auto-flow: column;
+     justify-content: space-evenly;
+    height: 500px;
+    background-color: rgb(127, 79, 36);
+    box-shadow: 15px 15px 15px 15px rgb(147, 102, 57);
+    width: 300px;
+    border-radius: 32px;
+    align-content: space-evenly;
+    padding: 20px;
+    
+  
+    
+}
+
+section.secondSection{
+    display: flex;
+    height: 100px;
+    background-color:rgb(164, 172, 134);
+}
+
+section.secondSection > div{
+     width: 50px;
+     height: 30px;
+    border: 1px solid black;
+    text-align: center;
+    justify-content: space-around;
+    background-color: aliceblue;
+}
+
+
+footer{
+    display: flex;
+    align-items: stretch;
+    align-items: flex-end;
+    justify-content: flex-end;
+     height: 80px;
+    background-color: rgb(194, 197, 170);
+        
+    
+}
+div > button{
+    background-color: rgb(147, 102, 57);
+    width: 100px;
+    height: 55px;
+    border-radius: 20%;
+    
+}
+#playThegame{
+    width: 100px;
+    height: 40px;
+    position: relative;
+    left: 125px;
+     border-radius: 10%;
+     border: none;
+     color: rgb(51, 61, 41);
+     font-weight: 600;
+
+    
+}
+
+#score{
+    background-color: blueviolet;
+    position: relative;
+
+
+    width: 10px;
+    height: 80px;
+}
+
+@media screen and (min-width: 900px){
+    
+    
+    section.firstSection > div{
+        width: 500px;
+        height: 800px;
+        transform: rotate(90deg);
+        position: relative;
+        bottom: 120px;
+    }
+
+    section.secondSection{
+        height: 250px;
+    }
+
+    div.btn{
+        transform: rotate(90deg)
+    }
+
+    section.secondSection > div{
+
+        width: 150px;
+        height: 100px;
+    }
+
+    footer{
+        height: 150px;
+    }
+
+    header{
+        height: 200px;
+    }
+
+
+    div > button{
+        width: 100px;
+        height: 100px;
+        border-radius: 20%;
+        transform: rotate(270deg)
+      
+        
+    }
+
+
+    #score{
+
+        background-color: blueviolet;
+        position: relative;
+        width: 150px;
+        height: 100px;
+        border-radius: 20%;
+        top: 10px;
+        bottom: 130px;
+      
+    }
+    h1{
+
+  font-size: 80px;
+  letter-spacing: 0.2em;
+
+    }
+
+    #playThegame{
+        width: 150px;
+        height: 60px;
+        position: relative;
+         left: -450px;
+         bottom: 750px;
+         border-radius: 10%;
+         border: none;
+         color: rgb(51, 61, 41);
+         font-size: 30px;
+         font-weight: 600;
+         
+        
+    }
+
+    p{
+        font-size: 40px;
+        font-weight: 700;
+        position: relative;
+        text-align: center;
+        letter-spacing: 0.2rem;
+    }
+    
+}
