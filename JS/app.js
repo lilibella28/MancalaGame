@@ -9,7 +9,7 @@ Constanss Variable
 ================================================================================================
 */
 
-const mainArrayNumber = [5, 2, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
+const mainArrayNumber = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
 
 const sumMainArray = mainArrayNumber.reduce((acc, num) => {
   acc = acc + num;
@@ -30,6 +30,7 @@ States Variable
 let player1Score = 0;
 let player2Score = 0;
 let indexUser;
+let currentPlayer;
 
 // let remaindsScore = sumMainArray; //Setting the remaind score to sum of the element inside tthe array UNSURE IF THESE THE Aproach i will take
 // console.log(sumMainArray)
@@ -83,27 +84,20 @@ function render() {
     // console.log(newBtn);
     return (newBtn.innerHTML = num);
   });
-
- 
-
-
   
+  winner()
 }
 
 function handlerEvent(e) {
-  console.log(e.target.id);
+
   indexUser = parseInt(e.target.id);
   const arrayPositionTofill = mainArrayNumber[indexUser];
-  console.log(arrayPositionTofill, " hello testing")
   mainArrayNumber[indexUser] = 0;
-  
   mancalaAdd(mainArrayNumber, indexUser - 1, arrayPositionTofill);
-
-  gameOver();
+  empthyStorages();
   scores();
-  winner();
-
   render()
+  // displayMessage.innerHTML = "Player Two turn";
 }
 
 //Thesee function add the initial value of the array to the buttoms.
@@ -123,17 +117,22 @@ function mancalaAdd(arr, starPoint, position) {
 
 function scores() {
   if (mainArrayNumber[6] > 0) {
-    return (player1Score = mainArrayNumber[6]);
+    player1Score = mainArrayNumber[6]
+    remaindMarbles = sumMainArray - player2Score 
+    return player1Score;
   }
 
-  if (mainArrayNumber[14] > 0) {
-    return (player2Score = mainArrayNumber[14]);
+  if (mainArrayNumber[13] > 0) {
+     player2Score = mainArrayNumber[13];
+     remaindMarbles = sumMainArray - player2Score 
+     return player2Score
   }
+ 
 }
 
-function gameOver() {
-  //Tried to see if you can create a range function becuase these think look so ugly
-
+function empthyStorages() {
+  //Tried to see if you can create a range function becuase these think look so ugl
+ 
   if (
     mainArrayNumber[0] === 0 &&
     mainArrayNumber[1] === 0 &&
@@ -147,13 +146,14 @@ function gameOver() {
       mainArrayNumber[9] +
       mainArrayNumber[10] +
       mainArrayNumber[11] +
-      mainArrayNumber[12];
+      mainArrayNumber[12] +
+      mainArrayNumber[13] ;
     console.log(player2Score);
     player2ScoreBox.innerHTML = player2Score;
     return player2Score;
   }
-
-  if (
+  
+  else if (
     mainArrayNumber[7] === 0 &&
     mainArrayNumber[8] === 0 &&
     mainArrayNumber[9] === 0 &&
@@ -166,24 +166,59 @@ function gameOver() {
       mainArrayNumber[2] +
       mainArrayNumber[3] +
       mainArrayNumber[4] +
-      mainArrayNumber[5];
+      mainArrayNumber[5] + 
+      mainArrayNumber[6]  ;
     console.log(player1Score);
-    player2ScoreBox.innerHTML = player2Score;
-    return player2Score;
+    player1ScoreBox.innerHTML = player1Score;
+    return player1Score;
   }
+
+   singleOne()
 }
+
 
 function winner() {
   if (player1Score > player2Score) {
-    displayMessage.innerHTML = `player 1 is the winner with a score of ${player1Score}`;
+    console.log(player2Score)
+    displayMessage.innerHTML = `player 1 is  winning with a score of ${player1Score}`;
     return displayMessage;
   }
-  else if (player2Score > player1Score) {
-    displayMessage.innerHTML = `player 2 is the winner with a score of ${player2Score}`;
-      return displayMessage;
-  } else {
-    displayMessage.innerHTML = "Tied Game";
+  if (player2Score > player1Score) {
+    displayMessage.innerHTML = `player 2 is winning with a score of ${player2Score}`;
+    return displayMessage;
   }
+   else {
+    return displayMessage.innerHTML = "Tied Game";
+ 
+  }
+  
 }
 
+
+
+function singleOne(){
+
+  if(mainArrayNumber[5] === 1){
+    mainArrayNumber[6] = mainArrayNumber[12]
+    mainArrayNumber[12] = 0
+    player1Score = mainArrayNumber[6]
+    return player1Score
+}
+else if(mainArrayNumber[12] === 1){
+  mainArrayNumber[13] = mainArrayNumber[5]
+  mainArrayNumber[5] = 0
+  player2Score = mainArrayNumber[13]
+  return player2Score
+}
+
+}
+
+
+
+function playersTurns(){
+    if(currentPlayer === 1){
+      return 
+    }
+
+}
 

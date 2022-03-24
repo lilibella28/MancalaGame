@@ -151,7 +151,7 @@ div > button{
       
         
     }
-
+     
 
     #score{
 
@@ -192,6 +192,15 @@ div > button{
         position: relative;
         text-align: center;
         letter-spacing: 0.2rem;
+    }
+    
+    .player2Turn{
+        background-color: aqua;
+    }
+  
+    .player1Turn{
+     grid-area: span;
+      background-color: brown;
     }
     
 }
