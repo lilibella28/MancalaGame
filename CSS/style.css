@@ -84,7 +84,8 @@ div > button{
     width: 100px;
     height: 55px;
     border-radius: 20%;
-    
+    border: none;
+    color: white
 }
 #playThegame{
     width: 100px;
@@ -96,6 +97,19 @@ div > button{
      color: rgb(51, 61, 41);
      font-weight: 600;
 
+    
+}
+
+.player1Turn.score1{
+    width: 100px;
+    height: 100px;
+ 
+}
+
+.player2Turn.score2{
+    width: 100px;
+    height: 100px;
+    border: none;
     
 }
 
