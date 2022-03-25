@@ -26,14 +26,15 @@ let displayMessage = document.querySelector("#message");
 
 buttoms.addEventListener("click", handlerEvent);
 startPlaying.addEventListener("click", init);
+
 render()
 
 
 //init
 function init(e) {
   remaindMarbles.innerHTML = sumMainArray;
-  player1ScoreBox = mainArrayNumber[6];
-  player2ScoreBox = mainArrayNumber[13];
+  player1ScoreBox = 0;
+  player2ScoreBox = 0;
   render();
   currentPlayer = true;
   turns()
@@ -61,14 +62,13 @@ function handlerEvent(e) {
   mancalaAdd(mainArrayNumber, indexUser - 1, arrayPositionTofill);
   render();
   empthyStorages();
- 
-  
+
 }
 
 //Main function, 
 
 // recursive function to move the value; the user choose,
-
+// [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
 
 function mancalaAdd(arr, starPoint, position) {
   if (position === 0) {
@@ -98,6 +98,7 @@ function scores() {
 //mancala rules 
 function empthyStorages() {
   //Tried to see if you can create a range function becuase these think look so ugly
+  //QuickSort ?
   if (
     mainArrayNumber[0] === 0 &&
     mainArrayNumber[1] === 0 &&
@@ -113,7 +114,7 @@ function empthyStorages() {
       mainArrayNumber[11] +
       mainArrayNumber[12] +
       mainArrayNumber[13];
-    winner();
+      winner();
     return player2Score;
   }
 
@@ -132,12 +133,13 @@ function empthyStorages() {
       mainArrayNumber[4] +
       mainArrayNumber[5] +
       mainArrayNumber[6];
-    winner();
+      winner();
     return player1Score;
   }
+
   scores()
-  render();
- 
+  // render();
+
 }
 //Rules check if the user at the last index 
 function singleOne(){
