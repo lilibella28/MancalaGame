@@ -7,8 +7,8 @@ const sumMainArray = mainArrayNumber.reduce((acc, num) => {
   return acc;
 }, 0);
 
-let player1Score;
-let player2Score;
+let player1Score = 0;
+let player2Score = 0;
 let indexUser;
 let currentPlayer;
 
@@ -18,23 +18,24 @@ let currentPlayer;
 const buttoms = document.querySelector("section.firstSection div" );
 let player1ScoreBox = document.querySelector("#player1S");
 let player2ScoreBox = document.querySelector("#player2S");
+let changep1 = document.getElementsByClassName("player1Turn")
 let remaindMarbles = document.querySelector("#remaindsMable");
 let startPlaying = document.querySelector("#playThegame");
-let clickMe = document.querySelector(".btn");
+// let clickMe = document.querySelector(".btn");
 let displayMessage = document.querySelector("#message");
 
 
 buttoms.addEventListener("click", handlerEvent);
 startPlaying.addEventListener("click", init);
-
 render()
 
 
 //init
 function init(e) {
+
   remaindMarbles.innerHTML = sumMainArray;
-  player1ScoreBox = 0;
-  player2ScoreBox = 0;
+  player1ScoreBox.innerHTML = player1Score;
+  player2ScoreBox.innerHTML = player2Score;
   render();
   currentPlayer = true;
   turns()
@@ -43,34 +44,38 @@ function init(e) {
 //Render Function
 
 function render() {
-  
+ 
   mainArrayNumber.forEach((num) => {
     const newBtn = document.querySelector("button");
     buttoms.appendChild(newBtn);
     return (newBtn.innerHTML = num);
   });
-  
+
 }
 
 
 
 //Event Handler
 function handlerEvent(e) {
+ 
   indexUser = parseInt(e.target.id);
   const arrayPositionTofill = mainArrayNumber[indexUser];
   mainArrayNumber[indexUser] = 0;
   mancalaAdd(mainArrayNumber, indexUser - 1, arrayPositionTofill);
   render();
+  currentPlayer = false;
+  turns();
   empthyStorages();
-
+  player1ScoreBox.innerHTML = player1Score;
+  player2ScoreBox.innerHTML = player2Score;
 }
 
 //Main function, 
 
 // recursive function to move the value; the user choose,
-// [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
 
 function mancalaAdd(arr, starPoint, position) {
+  
   if (position === 0) {
     return arr;
   }
@@ -79,21 +84,26 @@ function mancalaAdd(arr, starPoint, position) {
   }
   arr[starPoint] += 1;
   return mancalaAdd(arr, starPoint - 1, position - 1);
+  
 }
 
-function scores() {
+function scoresp1() {
   if (mainArrayNumber[6] > 0) {
     player1Score = mainArrayNumber[6];
-    remaindMarbles = sumMainArray - player2Score;
     return player1Score;
   }
+
+}
+
+function scorep2(){
   if (mainArrayNumber[13] > 0) {
     player2Score = mainArrayNumber[13];
-    remaindMarbles = sumMainArray - player2Score;
     return player2Score;
   }
 }
 // Rules goes! Here
+
+
 
 //mancala rules 
 function empthyStorages() {
@@ -114,10 +124,9 @@ function empthyStorages() {
       mainArrayNumber[11] +
       mainArrayNumber[12] +
       mainArrayNumber[13];
-      winner();
+      winner()
     return player2Score;
   }
-
   if (
     mainArrayNumber[7] === 0 &&
     mainArrayNumber[8] === 0 &&
@@ -133,28 +142,28 @@ function empthyStorages() {
       mainArrayNumber[4] +
       mainArrayNumber[5] +
       mainArrayNumber[6];
-      winner();
+      winner()  
     return player1Score;
   }
+  scoresp1();
+  scorep2();
 
-  scores()
-  // render();
 
 }
 //Rules check if the user at the last index 
-function singleOne(){
-  if (mainArrayNumber[5] === 1) {
-    mainArrayNumber[6] = mainArrayNumber[7];
-    mainArrayNumber[7] = 0;
-    player1Score = mainArrayNumber[6];
-    return player1Score;
-  }  if (mainArrayNumber[12] === 1) {
-    mainArrayNumber[13] = mainArrayNumber[0];
-    mainArrayNumber[0] = 0;
-    player2Score = mainArrayNumber[13];
-    return player2Score;
-  }
-}
+// function singleOne(){
+//   if (mainArrayNumber[5] === 1) {
+//     mainArrayNumber[6] = mainArrayNumber[7];
+//     mainArrayNumber[7] = 0;
+//     player1Score = mainArrayNumber[6];
+//     return player1Score;
+//   }  if (mainArrayNumber[12] === 1) {
+//     mainArrayNumber[13] = mainArrayNumber[0];
+//     mainArrayNumber[0] = 0;
+//     player2Score = mainArrayNumber[13];
+//     return player2Score;
+//   }
+// }
 
 function winner() {
   if (player1Score > player2Score) {
@@ -167,22 +176,22 @@ function winner() {
   } else {
     return (displayMessage.innerHTML = "Tied Game");
   }
+  
 }
 
 
-
-
 function turns(){
-
-  if(currentPlayer === true){
-
+  if(currentPlayer === true){  
     return displayMessage.innerHTML = "Player One turn"
   }
-
   if(currentPlayer === false){
     return displayMessage.innerHTML = "Player Two turn"
   }
 }
+
+
+ 
+ 
 
 
 
