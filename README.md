@@ -4,7 +4,6 @@
 ## Technologies
 - HTML
 - Javascript
-- Jquery
 - Css, Flexbox, Grid
 
 ## User Experiences:
